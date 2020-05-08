@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" CodeBehind="_Common.Master.cs" Inherits="System.Web.UI.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/Site.min.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <%--這是供只套用樣式而無共用UI--%>
+    <asp:ContentPlaceHolder ID="body" runat="server">
+    </asp:ContentPlaceHolder>
+    <script src="/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+    <script src="/jquery.blockUI-2.70.0.js"></script>
+    <script src="/angular-1.7.9/angular.min.js"></script>
+    <script type="text/javascript">
+        angular
+            .module('webapi', [])
+            .config(function ($httpProvider) {
+                var $log = angular.injector(['ng']).get('$log');
+                $httpProvider.interceptors.push(function ($q) {
+                    return {
+                        request: function (config) {
+                            if (config.url.indexOf('/api/') == 0) {
+                                $.blockUI({
+                                    message: '處理中，請稍候...',
+                                    css: {
+                                        border: 'none',
+                                        padding: '15px',
+                                        backgroundColor: '#000',
+                                        '-webkit-border-radius': '10px',
+                                        '-moz-border-radius': '10px',
+                                        opacity: .5,
+                                        color: '#fff'
+                                    }
+                                });
+                            }
+                            return config;
+                        },
+                        requestError: function (rejection) {
+                            return $q.reject(rejection);
+                        },
+                        response: function (response) {
+                            if (response.config.url.indexOf('/api/') == 0) {
+                                $.unblockUI();
+                            }
+                            return response;
+                        },
+                        responseError: function (rejection) {
+                            if (rejection.config.url.indexOf('/api/') == 0) {
+                                $.unblockUI();
+                                $log.debug('調用 ' + rejection.config.url + ' 時發生錯誤...');
+                                $log.debug(rejection.data);
+                                alert('呼叫 Web API 時發生錯誤，詳情請見開發人員工具的 Console 視窗。');
+                            }
+
+                            return $q.reject(rejection);
+                        }
+                    };
+                });
+            });
+    </script>
+    <asp:ContentPlaceHolder ID="scripts" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>

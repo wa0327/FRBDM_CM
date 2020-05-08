@@ -1,0 +1,21 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/_Base.Master" CodeBehind="_Form.master.cs" Inherits="FRBDM_CM.Web.Portal._Form" %>
+
+<asp:Content ContentPlaceHolderID="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ContentPlaceHolderID="body" runat="server">
+    <%--這裡可加一些共用UI--%>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="form" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</asp:Content>
+
+<asp:Content ContentPlaceHolderID="scripts" runat="server">
+    <asp:ContentPlaceHolder ID="scripts" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>

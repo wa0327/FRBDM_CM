@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Site.css",
+    "inputFile": "Site.less"
+  },
+  {
+    "outputFile": "Samples/AngularForm.css",
+    "inputFile": "Samples/AngularForm.less"
+  }
+]
