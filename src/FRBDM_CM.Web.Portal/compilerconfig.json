@@ -6,5 +6,9 @@
   {
     "outputFile": "Samples/AngularForm.css",
     "inputFile": "Samples/AngularForm.less"
+  },
+  {
+    "outputFile": "Samples/WebForm.css",
+    "inputFile": "Samples/WebForm.less"
   }
 ]

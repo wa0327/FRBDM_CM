@@ -156,6 +156,15 @@
       <DependentUpon>AngularForm.css</DependentUpon>
     </Content>
     <Content Include="Samples\WebForm.aspx" />
+    <Content Include="Samples\WebForm.css">
+      <DependentUpon>WebForm.less</DependentUpon>
+    </Content>
+    <Content Include="Samples\WebForm.less">
+      <DependentUpon>WebForm.aspx</DependentUpon>
+    </Content>
+    <Content Include="Samples\WebForm.min.css">
+      <DependentUpon>WebForm.css</DependentUpon>
+    </Content>
     <Content Include="Site.css">
       <DependentUpon>Site.less</DependentUpon>
     </Content>

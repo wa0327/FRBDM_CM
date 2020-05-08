@@ -1,3 +1,9 @@
 ﻿.panel-body {
   background-color: red;
 }
+div#dialog .aaa {
+  color: green;
+}
+div#dialog .aaa .bbb {
+  color: blue;
+}
